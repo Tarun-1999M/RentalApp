@@ -1,14 +1,20 @@
-import { useState } from 'react'
-import './App.css'
-
+import {BrowserRouter,Routes,Route} from "react-router-dom"
+import { Layout,Hero,Rooms,SingleRooms,FourZeroFour } from "./sections"
 function App() {
-  const [count, setCount] = useState(0)
+ 
 
   return (
       <div>
-          <h1 className="text-3xl font-bold underline">
-            Hello world!
-          </h1>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Layout />}> 
+                <Route index element={<Hero />} />
+                <Route path="rooms" element={<Rooms />} />
+                <Route path="rooms/:slug" element={<SingleRooms />} />
+                <Route path ="*" element={<FourZeroFour />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
       </div>
 
   )
