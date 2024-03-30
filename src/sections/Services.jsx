@@ -1,6 +1,7 @@
 import React from 'react'
 import Title from '../components/Title'
 import state from "../components/servicesInfo"
+import Features from './Features'
 
 const Services = () => {
   return (
@@ -18,6 +19,7 @@ const Services = () => {
         
     }
      </div>
+     <Features />
     </div>
   )
 }

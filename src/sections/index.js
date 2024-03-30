@@ -4,6 +4,7 @@ import Rooms from "./Rooms"
 import SingleRooms from "./SingleRooms"
 import FourZeroFour from "./FourZeroFour"
 import Services from "./Services";
+import Features from "./Features";
 
 export {
     Layout,
@@ -12,5 +13,6 @@ export {
     SingleRooms,
     FourZeroFour,
     Services,
+    Features,
     
 }

@@ -1,10 +1,12 @@
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import { Layout,Hero,Rooms,SingleRooms,FourZeroFour } from "./sections"
+import Context  from "./Context"
 function App() {
  
 
   return (
       <div>
+         <Context>
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Layout />}> 
@@ -15,6 +17,7 @@ function App() {
               </Route>
             </Routes>
           </BrowserRouter>
+          </Context>
       </div>
 
   )
