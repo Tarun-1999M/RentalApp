@@ -9,9 +9,8 @@ const RoomsContainer = () => {
 
   return (
     <div>
-      <h1>Hello from Rooms Container</h1>
+      <RoomsFilter rooms={rooms}/>
       <RoomsList rooms={sortedRooms}/>
-      <RoomsFilter />
     </div>
   )
 }

@@ -27,10 +27,62 @@ const Context = ({children}) => {
       loading: false,
       maxPrice,
       maxSize,
+      price:maxPrice,
     });
   }, []);
 
 
+
+  function handleChange(event) {
+    const target= event.target
+    let { name, value } = event.target;
+     value = target.type === "checkbox" ? target.checked : target.value;
+  
+    setState((prevState) => {
+      
+      const updatedState = { ...prevState, [name]: value };
+  
+      
+      let filteredRooms = prevState.rooms;
+      if(name === "type" && value !== "all") {
+        filteredRooms = filteredRooms.filter(room => room.type === value);
+      }
+      if (name==="capacity" && value!== 1) {
+        filteredRooms = filteredRooms.filter(room => room.capacity >= value);
+      }
+
+      if(name==="price"){
+        filteredRooms = filteredRooms.filter(room => room.price <= value);
+      }
+
+      if(name==="minSize"){
+        filteredRooms = filteredRooms.filter(
+          room => room.size >= value
+        );
+      }
+      if(name==="maxSize"){
+        filteredRooms = filteredRooms.filter(
+          room => room.size <= value
+        );
+      }
+      if (updatedState.breakfast) {
+        filteredRooms = filteredRooms.filter(room => room.breakfast === true);
+      }
+      //filter by pets
+      if (updatedState.pets) {
+        filteredRooms = filteredRooms.filter(room => room.pets === true);
+      }
+
+
+      // Add more if conditions for other filters like capacity, price, etc.
+  
+      // Update sortedRooms based on the filters applied
+      updatedState.sortedRooms = filteredRooms;
+  
+      return updatedState;
+    });
+  }
+  
    function getRoom(slug){
         let tempdata = [...state.rooms]
         const room = tempdata.find(room=>room.slug===slug)
@@ -39,7 +91,7 @@ const Context = ({children}) => {
   return (
     
     <div>
-      <RoomContext.Provider value={{state:{...state},getRoom:getRoom}}>
+      <RoomContext.Provider value={{state:{...state},getRoom:getRoom,handleChange:handleChange}}>
         {children}
       </RoomContext.Provider>
     </div>
