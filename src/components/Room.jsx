@@ -5,7 +5,7 @@ const Room = ({ room }) => {
     const { name, slug, images, price } = room;
     
     return (
-        <div className='w-[550px] shadow-2xl relative overflow-hidden'>
+        <div className='w-[400px] shadow-2xl relative overflow-hidden'>
             <img src={images[0]} alt="single room" className="transition-opacity duration-300 ease-in-out hover:opacity-50"/>
             <div className='absolute top-0 left-0 z-10 text-white bg-black pr-4 pb-4 bg-opacity-50'>
                 <h6>${price}</h6>
