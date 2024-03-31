@@ -1,6 +1,6 @@
 import React from 'react'
 import HeroMessage from '../components/HeroMessage'
-
+import RoomsContainer from '../components/RoomsContainer'
 
 const Rooms = () => {
   return (
@@ -12,6 +12,7 @@ const Rooms = () => {
       destination="/"
       />
     </div>
+      <RoomsContainer />
     </div>
   )
 }
