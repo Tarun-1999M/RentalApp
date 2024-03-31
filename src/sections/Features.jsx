@@ -1,11 +1,25 @@
 import React from 'react'
 import { RoomsData } from '../Context'
+import Title from '../components/Title'
+import Room from "../components/Room"
+
 const Features = () => {
-    const {status,result} = RoomsData()
+  //console.log(RoomsData())
+    const {rooms,featuredRooms,sortedRooms,loading} = RoomsData().state
+    
   return (
-    <div>
-      <h1>{result}</h1>
+    
+      <div className='text-center p-9'>
+      <Title title="Featured Rooms"/>
+      <div className='grid grid-cols-3 gap-4'>
+      {
+      featuredRooms.map((room,index)=>(
+        <Room key={index} room={room}/>
+      ))
+    }
     </div>
+      </div>
+    
   )
 }
 
