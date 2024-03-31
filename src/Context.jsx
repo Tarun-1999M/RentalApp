@@ -44,28 +44,20 @@ const Context = ({children}) => {
   
       
       let filteredRooms = prevState.rooms;
-      if(name === "type" && value !== "all") {
-        filteredRooms = filteredRooms.filter(room => room.type === value);
+      if(updatedState.type !== "all") {
+        filteredRooms = filteredRooms.filter(room => room.type === updatedState.type);
       }
-      if (name==="capacity" && value!== 1) {
-        filteredRooms = filteredRooms.filter(room => room.capacity >= value);
-      }
-
-      if(name==="price"){
-        filteredRooms = filteredRooms.filter(room => room.price <= value);
+      if (updatedState.capacity!== 1) {
+        filteredRooms = filteredRooms.filter(room => room.capacity >= parseInt(updatedState.capacity));
       }
 
-      if(name==="minSize"){
-        filteredRooms = filteredRooms.filter(
-          room => room.size >= value
-        );
-      }
-      if(name==="maxSize"){
-        filteredRooms = filteredRooms.filter(
-          room => room.size <= value
-        );
-      }
-      if (updatedState.breakfast) {
+      
+        filteredRooms = filteredRooms.filter(room => room.price <= parseInt(updatedState.price));
+      
+
+        filteredRooms = filteredRooms.filter(room => room.size >= parseInt(updatedState.minSize) && room.size <= parseInt(updatedState.maxSize));
+      
+        if (updatedState.breakfast) {
         filteredRooms = filteredRooms.filter(room => room.breakfast === true);
       }
       //filter by pets
